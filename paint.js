@@ -17,8 +17,6 @@ canvas.addEventListener("mousedown", function (e) {
     context.beginPath();
     context.arc(x, y, pointRadius, 0, 2 * Math.PI, true);
     context.fill();
-    // window.requestAnimationFrame(pointAnimation(x,y,pointRadius));
-
 
     pointsNumber = document.getElementById("myNumber").value;
     if (points.length < pointsNumber) {
@@ -26,7 +24,6 @@ canvas.addEventListener("mousedown", function (e) {
     };
 
     while (pointsNumber > 0) {
-        // lineAnimation(0);
         context.beginPath();
         context.moveTo(x, y);
         context.lineTo(points[points.length - pointsNumber][0], points[points.length - pointsNumber][1]);
@@ -36,31 +33,3 @@ canvas.addEventListener("mousedown", function (e) {
 
     points.push([x, y]);
 });
-
-/*
-function lineAnimation(progress) {
-    while (progress < 1) {
-        context.beginPath();
-        context.moveTo(points[points.length - pointsNumber][0] + progress*x, 
-            points[points.length - pointsNumber][1] + progress*y);
-        context.lineTo(x, y);
-        context.stroke();
-        progress += 0.01;
-        window.requestAnimationFrame(lineAnimation(progress));
-    }
-}
-
-
-
-/*
-function pointAnimation(x,y,radius) {
-    radius += animationStep;
-    while (radius<maxAnimationRadius) {
-        context.clearRect(0,0,300,300);
-        context.beginPath();
-        context.arc(x, y, radius, 0, 2*Math.PI, true);
-        context.stroke();
-
-        window.requestAnimationFrame(pointAnimation(x,y,radius));
-    }
-}*/
